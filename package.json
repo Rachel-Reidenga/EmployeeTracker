@@ -11,13 +11,14 @@
     "url": "git+https://github.com/Rachel-Reidenga/EmployeeTracker.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rachel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Rachel-Reidenga/EmployeeTracker/issues"
   },
   "homepage": "https://github.com/Rachel-Reidenga/EmployeeTracker#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "inquirer": "^8.0.0",
     "mysql2": "^2.2.5"
   }
