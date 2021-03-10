@@ -33,4 +33,32 @@ async function getRoles() {
     return roles;
 }
 
+async function getDepartmentNames() {
+    let query = "SELECT name FROM department";
+    const rows = await db.query(query);
+
+    let departments = [];
+    for(const row of rows) {
+        departments.push(row.name);
+    }
+
+    return departments;
+}
+
+async function getDepartmentId(departmentName) {
+    let query = "SELECT * FROM department WHERE department.name=?";
+    let args = [departmentName];
+    const rows = await db.query(query, args);
+    return rows[0].id;
+}
+
+async function getRoleId(roleName) {
+    let query = "SELECT * FROM role WHERE role.title=?";
+    let args = [roleName];
+    const rows = await db.query(query, args);
+    return rows[0].id;
+}
+
+
+
 main();
