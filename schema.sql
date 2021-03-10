@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS db;
-CREATE DATABASE db;
-USE db;
+DROP DATABASE IF EXISTS schema;
+CREATE DATABASE schema;
+USE schema;
 
 CREATE TABLE department (
     id INTEGER NOT NULL auto_increment PRIMARY KEY,

@@ -6,7 +6,7 @@ INSERT into department (name) VALUES ("Design");
 INSERT into department (name) VALUES ("IT");
 INSERT into department (name) VALUES ("HR");
 
-INSERT into role (title, salary, departmentId) VALUES ("Sales Lead", 90000, 1);
+INSERT into role (title, salary, departmentId) VALUES ("Sales Lead", 90000, 1, NULL);
 INSERT into role (title, salary, departmentId) VALUES ("Sales Team Member", 70000, 1);
 INSERT into role (title, salary, departmentId) VALUES ("Researcher", 80000, 2);
 INSERT into role (title, salary, departmentId) VALUES ("Designer", 80000, 3);
