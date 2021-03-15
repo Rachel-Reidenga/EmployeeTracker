@@ -1,4 +1,5 @@
 const connection = require ("./connection");
+const inquirer = require("inquirer");
 
 class DB {
     constructor(connection) {
