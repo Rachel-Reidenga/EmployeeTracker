@@ -7,17 +7,17 @@ class Database {
     }
     query (sql, args) {
         return new Promise ((resolve, reject) => {
-            this.connection.query( sql, args, (err, rows) =>
+            this.connection.query( sql, args, (err, rows) => {
                 if (err) {
                     console.log(err.sql);
                     console.log("");
                     return reject (err);
                 }
                 resolve (rows);
-                );
+            });
         });
     }
-}
+
 
 close() {
     return new Promise ((resolve, reject) => {
@@ -27,6 +27,8 @@ close() {
             resolve();
         });
     });
+}
+
 }
 
 module.exports = Database;

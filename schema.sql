@@ -1,26 +1,26 @@
-DROP DATABASE IF EXISTS schema;
-CREATE DATABASE schema;
-USE schema;
+DROP DATABASE IF EXISTS employee;
+CREATE DATABASE employee;
+USE employee;
 
 CREATE TABLE department (
-    id INTEGER NOT NULL auto_increment PRIMARY KEY,
-    name VARCHAR(30)
-);
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR (30) UNIQUE NOT NULL 
+    );
 
 CREATE TABLE role (
-    id INTEGER NOT NULL auto_increment PRIMARY KEY,
-    title VARCHAR(30);
+    id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
+    title VARCHAR (30),
     salary DECIMAL,
-    departmentId INTEGER,
+    departmentId INT UNSIGNED,
     FOREIGN KEY (departmentId) REFERENCES department(id)
 );
 
 CREATE TABLE employee (
-    id INTEGER NOT NULL auto_increment PRIMARY KEY,
-    firstName VARCHAR(30);
-    lastName VARCHAR(30);
-    roleId INTEGER,
-    managerId INTEGER,
+    id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
+    firstName VARCHAR (30),
+    lastName VARCHAR (30),
+    roleId INT UNSIGNED,
+    managerId INT UNSIGNED,
     FOREIGN KEY (roleId) REFERENCES role(id),
-    FOREIGN KEY (managerId) REFERENCES role(id);
-)
+    FOREIGN KEY (managerId) REFERENCES role(id)
+);
