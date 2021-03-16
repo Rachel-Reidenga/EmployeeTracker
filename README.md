@@ -24,10 +24,10 @@ Link to repository on [GitHub](https://github.com/Rachel-Reidenga/ParkProject)
 
 ## Screenshots
 
-![Prompt List](../EmployeeTrackerChallenge/assets/Prompt%20List.png)
+![Prompt List](https://github.com/Rachel-Reidenga/EmployeeTracker/blob/master/assets/Prompt%20List.png)
 
 
-![Employee Table](../EmployeeTrackerChallenge/assets/Employee%20Table.png)
+![Employee Table](https://github.com/Rachel-Reidenga/EmployeeTracker/blob/master/assets/Employee%20Table.png?raw=true)
 
 ![Walkthrough Video]()
 
