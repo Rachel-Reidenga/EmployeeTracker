@@ -18,9 +18,7 @@ The Employee Tracker is a way to quickly view all departments, roles, managaers 
 
 ## Deployment
 
-![Walkthrough Video]()
-
-Link to walkthrough video [Walkthrough Video]()
+Link to walkthrough video [Walkthrough Video](https://drive.google.com/file/d/1LYKWziiTzvZY85lhSdn3FILnYL-3XbQf/view)
 
 Link to repository on [GitHub](https://github.com/Rachel-Reidenga/EmployeeTracker/tree/master)
 
