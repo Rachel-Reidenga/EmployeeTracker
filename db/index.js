@@ -1,5 +1,6 @@
 const connection = require ("./connection");
 const inquirer = require("inquirer");
+const table = require("console.table");
 
 class DB {
     constructor(connection) {
@@ -55,9 +56,7 @@ function viewDepartments() {
     var query = "SELECT * FROM department";
       connection.query(query, function(err, res) {
           console.log(`DEPARTMENTS:`)
-        res.forEach(department => {
-            console.log(`ID: ${department.id} | Name: ${department.name}`)
-        })
+          console.table(res);
         start();
         });
     };
@@ -66,9 +65,7 @@ function viewRoles() {
     var query = "SELECT * FROM role";
         connection.query(query, function(err, res) {
             console.log(`ROLES:`)
-        res.forEach(role => {
-            console.log(`ID: ${role.id} | Title: ${role.title} | Salary: ${role.salary} | Department ID: ${role.departmentId}`);
-        })
+            console.table(res);
         start();
         });
     };
@@ -77,9 +74,7 @@ function viewEmployees() {
     var query = "SELECT * FROM employee";
         connection.query(query, function(err, res) {
             console.log(`EMPLOYEES:`)
-        res.forEach(employee => {
-            console.log(`ID: ${employee.id} | Name: ${employee.firstName} ${employee.lastName} | Role ID: ${employee.roleId} | Manager ID: ${employee.managerId}`);
-        })
+            console.table(res);
         start();
         });
     };
@@ -95,6 +90,7 @@ function addDepartment() {
         var query = "INSERT INTO department (name) VALUES ( ? )";
         connection.query(query, answer.department, function(err, res) {
             console.log(`You have added this department: ${(answer.department).toUpperCase()}.`)
+            console.table(res);
         })
         viewDepartments();
         })
@@ -120,11 +116,6 @@ function addRole() {
             message: "Which department uses this role?",
             choices: function() {
                 var choicesArray = [];
-                res.forEach(res => {
-                    choicesArray.push(
-                        res.name
-                    );
-                })
                 return choicesArray;
               }
           }
@@ -143,9 +134,11 @@ function addRole() {
        let query = "INSERT INTO role (title, salary, departmentId) VALUES (?, ?, ?)";
        let values = [answer.title, parseInt(answer.salary), id]
        console.log(values);
+       console.table(res);
         connection.query(query, values,
             function(err, res, fields) {
             console.log(`You have added this role: ${(values[0]).toUpperCase()}.`)
+            console.table(res);
         })
             viewRoles()
             })
@@ -173,11 +166,6 @@ async function addEmployee() {
             message: "What is the employee's role?",
             choices: function() {
              rolesArray = [];
-                result.forEach(result => {
-                    rolesArray.push(
-                        result.title
-                    );
-                })
                 return rolesArray;
               }
           }
@@ -185,6 +173,7 @@ async function addEmployee() {
 
         .then(function(answer) {
         console.log(answer);
+        console.table(res);
         const role = answer.roleName;
         connection.query('SELECT * FROM role', function(err, res) {
             if (err) throw (err);
@@ -201,11 +190,6 @@ async function addEmployee() {
                         message: "Who is the manager?",
                         choices: function() {
                             managersArray = []
-                            res.forEach(res => {
-                                managersArray.push(
-                                    res.lastName)
-                                
-                            })
                             return managersArray;
                         }
                     }
@@ -218,12 +202,15 @@ async function addEmployee() {
             })
             let managerId = filteredManager[0].id;
                     console.log(managerAnswer);
+                    console.table(res);
                     let query = "INSERT INTO employee (firstName, lastName, roleId, managerId) VALUES (?, ?, ?, ?)";
                     let values = [answer.firstName, answer.lastName, roleId, managerId]
                     console.log(values);
+                    console.table(res);
                      connection.query(query, values,
                          function(err, res, fields) {
                          console.log(`You have added employee: ${(values[0]).toUpperCase()}.`)
+                         console.table(res);
                         })
                         viewEmployees();
                         })
@@ -245,11 +232,6 @@ function updateRole() {
             message: "Which employee's role is changing?",
             choices: function() {
              employeeArray = [];
-                result.forEach(result => {
-                    employeeArray.push(
-                        result.lastName
-                    );
-                })
                 return employeeArray;
               }
           }
@@ -257,6 +239,7 @@ function updateRole() {
 
         .then(function(answer) {
         console.log(answer);
+        console.table(res);
         const name = answer.employeeName;
         connection.query("SELECT * FROM role", function(err, res) {
                 inquirer
@@ -278,15 +261,18 @@ function updateRole() {
                 ]).then(function(rolesAnswer) {
                     const role = rolesAnswer.role;
                     console.log(rolesAnswer.role);
+                    console.table(res);
                 connection.query('SELECT * FROM role WHERE title = ?', [role], function(err, res) {
                 if (err) throw (err);
                     let roleId = res[0].id;
                     let query = "UPDATE employee SET roleId ? WHERE lastName ?";
                     let values = [roleId, name]
                     console.log(values);
+                    console.table(res);
                      connection.query(query, values,
                          function(err, res, fields) {
                          console.log(`You have updated ${name}'s role to ${role}.`)
+                         console.table(res);
                         })
                         viewEmployees();
                         })
