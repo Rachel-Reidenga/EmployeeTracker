@@ -138,7 +138,7 @@ function addRole() {
         connection.query(query, values,
             function(err, res, fields) {
             console.log(`You have added this role: ${(values[0]).toUpperCase()}.`)
-            console.table(res);
+            // console.table(res);
         })
             viewRoles()
             })
@@ -173,7 +173,7 @@ async function addEmployee() {
 
         .then(function(answer) {
         console.log(answer);
-        console.table(res);
+        // console.table(res);
         const role = answer.roleName;
         connection.query('SELECT * FROM role', function(err, res) {
             if (err) throw (err);
@@ -206,7 +206,7 @@ async function addEmployee() {
                     let query = "INSERT INTO employee (firstName, lastName, roleId, managerId) VALUES (?, ?, ?, ?)";
                     let values = [answer.firstName, answer.lastName, roleId, managerId]
                     console.log(values);
-                    console.table(res);
+                    // console.table(res);
                      connection.query(query, values,
                          function(err, res, fields) {
                          console.log(`You have added employee: ${(values[0]).toUpperCase()}.`)
