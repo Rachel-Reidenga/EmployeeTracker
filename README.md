@@ -18,9 +18,11 @@ The Employee Tracker is a way to quickly view all departments, roles, managaers 
 
 ## Deployment
 
-Link to code on [GitHub](https://github.com/Rachel-Reidenga/ParkProject/blob/main/assets/js/script.js)
+![Walkthrough Video]()
 
-Link to repository on [GitHub](https://github.com/Rachel-Reidenga/ParkProject)
+Link to walkthrough video [Walkthrough Video]()
+
+Link to repository on [GitHub](https://github.com/Rachel-Reidenga/EmployeeTracker/tree/master)
 
 ## Screenshots
 
@@ -29,7 +31,7 @@ Link to repository on [GitHub](https://github.com/Rachel-Reidenga/ParkProject)
 
 ![Employee Table](https://github.com/Rachel-Reidenga/EmployeeTracker/blob/master/assets/Employee%20Table.png?raw=true)
 
-![Walkthrough Video]()
+
 
 ## Built With
 
