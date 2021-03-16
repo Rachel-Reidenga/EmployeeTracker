@@ -116,6 +116,11 @@ function addRole() {
             message: "Which department uses this role?",
             choices: function() {
                 var choicesArray = [];
+                res.forEach(res => {
+                    choicesArray.push(
+                        res.name
+                    );
+                })
                 return choicesArray;
               }
           }
@@ -138,7 +143,6 @@ function addRole() {
         connection.query(query, values,
             function(err, res, fields) {
             console.log(`You have added this role: ${(values[0]).toUpperCase()}.`)
-            // console.table(res);
         })
             viewRoles()
             })
@@ -166,14 +170,18 @@ async function addEmployee() {
             message: "What is the employee's role?",
             choices: function() {
              rolesArray = [];
+                res.forEach(res => {
+                    rolesArray.push(
+                        res.title
+                    );
+                })
                 return rolesArray;
               }
           }
           ]) 
 
         .then(function(answer) {
-        console.log(answer);
-        // console.table(res);
+        // console.log(answer);
         const role = answer.roleName;
         connection.query('SELECT * FROM role', function(err, res) {
             if (err) throw (err);
@@ -190,6 +198,11 @@ async function addEmployee() {
                         message: "Who is the manager?",
                         choices: function() {
                             managersArray = []
+                            res.forEach(res => {
+                                managersArray.push(
+                                    res.lastName)
+                                
+                            })
                             return managersArray;
                         }
                     }
@@ -202,11 +215,9 @@ async function addEmployee() {
             })
             let managerId = filteredManager[0].id;
                     console.log(managerAnswer);
-                    console.table(res);
                     let query = "INSERT INTO employee (firstName, lastName, roleId, managerId) VALUES (?, ?, ?, ?)";
                     let values = [answer.firstName, answer.lastName, roleId, managerId]
                     console.log(values);
-                    // console.table(res);
                      connection.query(query, values,
                          function(err, res, fields) {
                          console.log(`You have added employee: ${(values[0]).toUpperCase()}.`)
@@ -232,6 +243,11 @@ function updateRole() {
             message: "Which employee's role is changing?",
             choices: function() {
              employeeArray = [];
+                result.forEach(result => {
+                    employeeArray.push(
+                        result.lastName
+                    );
+                })
                 return employeeArray;
               }
           }
@@ -261,14 +277,12 @@ function updateRole() {
                 ]).then(function(rolesAnswer) {
                     const role = rolesAnswer.role;
                     console.log(rolesAnswer.role);
-                    console.table(res);
                 connection.query('SELECT * FROM role WHERE title = ?', [role], function(err, res) {
                 if (err) throw (err);
                     let roleId = res[0].id;
                     let query = "UPDATE employee SET roleId ? WHERE lastName ?";
                     let values = [roleId, name]
                     console.log(values);
-                    console.table(res);
                      connection.query(query, values,
                          function(err, res, fields) {
                          console.log(`You have updated ${name}'s role to ${role}.`)
