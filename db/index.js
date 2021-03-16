@@ -181,7 +181,7 @@ async function addEmployee() {
           ]) 
 
         .then(function(answer) {
-        // console.log(answer);
+        console.log(answer);
         const role = answer.roleName;
         connection.query('SELECT * FROM role', function(err, res) {
             if (err) throw (err);
