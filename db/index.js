@@ -151,7 +151,7 @@ function addRole() {
 }
 
 async function addEmployee() {
-    connection.query('SELECT * FROM role', function(err, result) {
+    connection.query('SELECT * FROM role', function(err, res) {
         if (err) throw (err);
     inquirer
         .prompt([{
@@ -233,7 +233,7 @@ async function addEmployee() {
 }
 
 function updateRole() {
-    connection.query('SELECT * FROM employee', function(err, result) {
+    connection.query('SELECT * FROM employee', function(err, res) {
         if (err) throw (err);
     inquirer
         .prompt([
